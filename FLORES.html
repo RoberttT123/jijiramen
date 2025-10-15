@@ -74,7 +74,17 @@
     /* Caption */
     .caption{position:relative;text-align:center;margin-top:28px;font-size:18px;color:#f0e7df;opacity:.95;animation:fadeIn 2s ease-in forwards}
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
+/* Ajustes responsivos */
+.ramen-scene { width: 90vw; max-width: 720px; }
+.bowl { width: 100%; height: auto; aspect-ratio: 2.17 / 1; }
+.broth { top: 25%; height: 40%; left: 5%; right: 5%; border-radius: 50% / 25%; }
+.noodles .noodle { height: 2.5vw; border-width: 0.5vw; }
+.egg { width: 12vw; height: 9vw; left: 52%; top: 28%; }
+.yolk { width: 6vw; height: 6vw; }
+.scallions span { width: 5vw; height: 1vw; }
+.chopsticks { width: 40vw; height: 1vw; top: 5%; right: 5%; }
+.splash { width: 1.5vw; height: 1.5vw; bottom: 15%; }
+.vapor { width: 1.5vw; height: 15vw; filter: blur(0.3vw); }
     /* Responsive */
     @media (max-width:480px){.bowl{width:320px;height:160px}.chopsticks{width:180px}}
   </style>
@@ -90,23 +100,23 @@
           <div class="noodle n3"></div>
           <div class="noodle n4"></div>
         </div>
-
+  
         <div class="egg">
           <div class="yolk"></div>
         </div>
-        <div class="naruto">@</div>
+  
         <div class="scallions"><span></span><span></span><span></span></div>
-
+  
         <div class="steam" aria-hidden="true">
           <div class="vapor"></div>
           <div class="vapor v2"></div>
           <div class="vapor v3"></div>
         </div>
-
+  
         <div class="splash"></div>
         <div class="splash s2"></div>
         <div class="splash s3"></div>
-
+  
         <div class="chopsticks" aria-hidden="true">
           <div class="stick" style="position:relative"></div>
         </div>
