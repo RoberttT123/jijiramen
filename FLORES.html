@@ -14,8 +14,8 @@
       --chop:#6b4f2b;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg) 0%, #1b2536 100%);color:#fff}
-    .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,var(--bg) 0%, #1b2536 100%);color:#fff;overflow:hidden}
+    .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative}
 
     /* Bowl */
     .ramen-scene{width:720px;max-width:92%;position:relative}
@@ -25,35 +25,55 @@
     .broth{position:absolute;left:30px;right:30px;top:64px;height:120px;border-radius:160px/60px;background:linear-gradient(180deg,var(--broth),#d95f43);box-shadow:inset 0 -6px 20px rgba(0,0,0,.12)}
 
     /* Noodles */
-    .noodles{position:absolute;left:60px;right:60px;top:40px;height:140px;pointer-events:none}
-    .noodle{position:absolute;height:20px;border-radius:20px;border:5px solid rgba(0,0,0,.06);background:linear-gradient(90deg,var(--noodle),#f2bf68);box-shadow:0 6px 14px rgba(0,0,0,.06);transform-origin:left center}
-    .n1{left:10%;top:10%;width:75%;transform:rotate(-6deg)}
-    .n2{left:5%;top:30%;width:80%;transform:rotate(4deg)}
-    .n3{left:12%;top:50%;width:70%;transform:rotate(-2deg)}
-    .n4{left:22%;top:70%;width:60%;transform:rotate(6deg)}
+    .noodles{position:absolute;left:60px;right:60px;top:40px;height:140px;pointer-events:none;overflow:hidden}
+    .noodle{position:absolute;height:20px;border-radius:20px;border:5px solid rgba(0,0,0,.06);background:linear-gradient(90deg,var(--noodle),#f2bf68);box-shadow:0 6px 14px rgba(0,0,0,.06);transform-origin:left center;animation:wobble 3s ease-in-out infinite alternate}
+    @keyframes wobble {
+      0% {transform:rotate(-4deg) translateY(0px);}
+      50% {transform:rotate(4deg) translateY(3px);}
+      100% {transform:rotate(-4deg) translateY(0px);}
+    }
+    .n1{left:10%;top:10%;width:75%;animation-delay:0s}
+    .n2{left:5%;top:30%;width:80%;animation-delay:.5s}
+    .n3{left:12%;top:50%;width:70%;animation-delay:1s}
+    .n4{left:22%;top:70%;width:60%;animation-delay:1.5s}
 
     /* Toppings */
-    .egg{position:absolute;width:84px;height:64px;border-radius:50%;left:52%;top:70px;background:linear-gradient(180deg,#fff,#f7f7f7);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.15)}
+    .egg{position:absolute;width:84px;height:64px;border-radius:50%;left:52%;top:70px;background:linear-gradient(180deg,#fff,#f7f7f7);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 14px rgba(0,0,0,.15);animation:float 4s ease-in-out infinite alternate}
     .yolk{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#ffd54d,#ffb300);box-shadow:inset 0 -6px 10px rgba(0,0,0,.08)}
-    .naruto{position:absolute;width:48px;height:48px;border-radius:50%;left:34%;top:58px;background:linear-gradient(45deg,#fff,#ffe);display:flex;align-items:center;justify-content:center;font-weight:700;color:#e76f51}
-
-    .scallions{position:absolute;left:22%;top:40px;display:flex;gap:6px}
+    .naruto{position:absolute;width:48px;height:48px;border-radius:50%;left:34%;top:58px;background:linear-gradient(45deg,#fff,#ffe);display:flex;align-items:center;justify-content:center;font-weight:700;color:#e76f51;animation:float 5s ease-in-out infinite alternate-reverse}
+    .scallions{position:absolute;left:22%;top:40px;display:flex;gap:6px;animation:float 3.8s ease-in-out infinite alternate}
     .scallions span{width:40px;height:8px;border-radius:6px;background:linear-gradient(90deg,#9be15d,#5aa82f);box-shadow:0 2px 6px rgba(0,0,0,.12);transform:rotate(-10deg)}
+
+    @keyframes float {
+      0% {transform:translateY(0px);}
+      100% {transform:translateY(-6px);}
+    }
 
     /* Steam */
     .steam{position:absolute;left:50%;top:-40px;transform:translateX(-50%);pointer-events:none}
-    .vapor{width:14px;height:110px;border-radius:12px;background:linear-gradient(180deg,rgba(249,241,230,.95),rgba(249,241,230,0));opacity:.9;filter:blur(6px);animation:rise 4s infinite}
+    .vapor{width:14px;height:110px;border-radius:12px;background:linear-gradient(180deg,rgba(249,241,230,.95),rgba(249,241,230,0));opacity:.9;filter:blur(6px);animation:rise 4s infinite ease-in-out}
     .vapor.v2{left:40px;top:0;animation-delay:.6s;animation-duration:3.2s}
     .vapor.v3{left:-40px;top:-10px;animation-delay:1.1s;animation-duration:4.6s}
     @keyframes rise{0%{transform:translateY(30px) scale(.8);opacity:.2}50%{opacity:.9}100%{transform:translateY(-80px) scale(1.2);opacity:0}}
 
     /* Chopsticks */
-    .chopsticks{position:absolute;right:8%;top:6%;transform:rotate(-18deg);width:280px;height:12px}
+    .chopsticks{position:absolute;right:8%;top:6%;transform:rotate(-18deg);width:280px;height:12px;animation:chopmove 6s ease-in-out infinite alternate}
+    @keyframes chopmove{
+      0%{transform:rotate(-20deg) translateY(0)}
+      100%{transform:rotate(-14deg) translateY(-4px)}
+    }
     .stick{height:12px;border-radius:12px;background:linear-gradient(90deg,#7e5a3a,#5a3f27);box-shadow:0 6px 12px rgba(0,0,0,.2)}
     .stick::after{content:"";position:absolute;right:0;top:-6px;width:60%;height:12px;border-radius:12px;background:linear-gradient(90deg,#e6b7a0,#c68b6b);opacity:.95}
 
+    /* Splash animations */
+    .splash{position:absolute;bottom:100px;left:50%;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.6);animation:splashUp 1.8s ease-out infinite;filter:blur(2px)}
+    .splash.s2{animation-delay:.5s;left:46%;background:rgba(255,255,255,.4)}
+    .splash.s3{animation-delay:1s;left:54%;background:rgba(255,255,255,.5)}
+    @keyframes splashUp{0%{transform:translateY(0) scale(1);opacity:1;}50%{transform:translateY(-40px) scale(1.2);opacity:.8;}100%{transform:translateY(-80px) scale(.8);opacity:0;}}
+
     /* Caption */
-    .caption{position:relative;text-align:center;margin-top:28px;font-size:18px;color:#f0e7df;opacity:.95}
+    .caption{position:relative;text-align:center;margin-top:28px;font-size:18px;color:#f0e7df;opacity:.95;animation:fadeIn 2s ease-in forwards}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
     /* Responsive */
     @media (max-width:480px){.bowl{width:320px;height:160px}.chopsticks{width:180px}}
@@ -83,13 +103,16 @@
           <div class="vapor v3"></div>
         </div>
 
+        <div class="splash"></div>
+        <div class="splash s2"></div>
+        <div class="splash s3"></div>
+
         <div class="chopsticks" aria-hidden="true">
           <div class="stick" style="position:relative"></div>
         </div>
       </div>
 
-      <div class="table"></div>
-      <div class="caption">¿Te apetece un ramen? 🍜</div>
+    
     </div>
   </div>
 </body>
